@@ -1,11 +1,13 @@
 // Imports
 import Utils from './service/Utils'
 import Home from './views/pages/Home'
+import Login from './views/pages/Login'
 import Error404 from './views/pages/Error'
 
 // Routes
 let routes = {
     '/':Home,
+    '/login':Login
 }
 
 const router = async () => {
