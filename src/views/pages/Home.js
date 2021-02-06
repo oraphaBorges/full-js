@@ -5,8 +5,10 @@ let Home  = {
     render: async () =>{
         let NavBar = await Nav.render()
         let view = `<h1>Home page</h1>
-            ${NavBar}
-            <button id="tester">Valor de Teste</button>
+            <div>
+                <a href="#/login">Logar</a>
+                <a href="#/signup">Cadastrar</a>
+            </div>
         `
         return view
     },
