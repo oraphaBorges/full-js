@@ -1,9 +1,9 @@
 import Nav from '../components/Nav'
 
-let Login  = {
+let Transacao  = {
     render: async () =>{
         let NavBar = await Nav.render()
-        let view = `<h1>It's Login Bitch</h1> ${NavBar}`
+        let view = `<h1>It's Transaction Bitch</h1> ${NavBar}`
         return view
     },
     after_render: async () =>{
@@ -11,4 +11,4 @@ let Login  = {
     }
 }
 
-export default Login;
+export default Transacao;

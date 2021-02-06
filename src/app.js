@@ -1,13 +1,27 @@
 // Imports
 import Utils from './service/Utils'
 import Home from './views/pages/Home'
-import Login from './views/pages/Login'
+import Cadastrar from './views/pages/Cadastrar'
+import Dashboard from './views/pages/Dashboard'
+import ErrorLogin from './views/pages/ErrorLogin'
 import Error404 from './views/pages/Error'
+import Extrato from './views/pages/Extrato'
+import ForgotPass from './views/pages/ForgotPassword'
+import Login from './views/pages/Login'
+import PlanoConta from './views/pages/PlanoConta'
+import Transacao from './views/pages/Transacao'
 
 // Routes
 let routes = {
     '/':Home,
-    '/login':Login
+    '/dashboard':Dashboard,
+    '/error-login':ErrorLogin,
+    '/extrato':Extrato,
+    '/forgotpass':ForgotPass,
+    '/login':Login,
+    '/plano_contas':PlanoConta,
+    '/signup':Cadastrar,
+    '/transacao':Transacao,
 }
 
 const router = async () => {
