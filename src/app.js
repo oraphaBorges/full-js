@@ -1,3 +1,30 @@
-var root = document.getElementById('root')
+// Imports
+import Utils from './service/Utils'
+import Home from './views/pages/Home'
+import Error404 from './views/pages/Error'
 
-root.innerHTML = `<h1>Hello World!</h1>`
+// Routes
+let routes = {
+    '/':Home,
+}
+
+const router = async () => {
+    const root = null || document.getElementById('root')
+    // Obter URL do Navegador 
+    let request = Utils.parseRequestURL();
+    // Analisaer a URL
+    let parseURL = (request.resource ? '/' + request.resource:'/') +
+                   (request.id ? '/:id' + request.id:'') +
+                   (request.verb ? '/:verb' + request.verb:'');
+
+    // Renderiza página conforme URLS
+    let page = routes[parseURL] ? routes[parseURL] : Error404
+    root.innerHTML = await page.render();
+    await page.after_render();
+}
+
+// Observa as mudanças na hash
+window.addEventListener('hashchange',router);
+
+// Observa o carregamento da página
+window.addEventListener('load',router);
