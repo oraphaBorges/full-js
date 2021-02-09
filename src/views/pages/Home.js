@@ -17,7 +17,7 @@ let Home  = {
                     <input id="confirm-password" class="input" type="password" name="confirm-password" placeholder="Confirme sua senha">
                     <button id="bnt" type="submit" class="btn btn-main-outline btn-rounded">Cadastrar</button>
                 </form>
-                <a href="/login.html">Fazer Login</a>
+                <a href="#/login">Fazer Login</a>
             </div>
         `
         return view
@@ -40,7 +40,7 @@ let Home  = {
                     }
                 }).then(response =>{
                     alert('Usuário cadastrado')
-                    console.log(response);
+                    console.log(response.data);
                     location.replace('#/login');
                 }).catch(response => {
                     console.log(response);
