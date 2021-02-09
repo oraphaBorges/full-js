@@ -34,10 +34,13 @@ let Login  = {
                         'Content-Type': 'application/json'
                     }
                 }).then(response =>{
-                    localStorage.setItem('token', response.data.token)
-                    location.replace('#/dashboard');
+                    if(response.status === 200){
+                        localStorage.setItem('userData', JSON.stringify(response.data))
+                        location.replace('#/dashboard');
+                    }
                 }).catch(response => {
                     console.log(response);
+                    location.replace('#/login');
                 })
             }
         })
