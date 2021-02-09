@@ -1,13 +1,13 @@
-import api from '../../service/api';
+import Logo from '../../img/logo.png';
 
 let Nav  = {
     render: async () =>{
         let view = `
-            <a href="#/dashboard">Home</a>
-            <a href="#/transacao">Transação</a>
-            <a href="#/extrato">Extrato</a>
-            <a href="#/plano_contas">Planos de Conta</a>
-            <a href="#/">Sair</a>
+        <nav class="nav container">
+            <a class="logo" href="#">
+                <img class="nav-logo" src="${Logo}" alt="logo">
+            </a>
+        </nav>
             `
         return view
     },

@@ -1,16 +1,11 @@
 import api from '../../service/api';
 import Nav from '../components/Nav';
-import Logo from '../../img/logo.png';
 
 let Home  = {
     render: async () =>{
         let NavBar = await Nav.render()
         let view = `
-            <nav class="nav container">
-                <a class="logo" href="#">
-                    <img class="nav-logo" src="${Logo}" alt="logo">
-                </a>
-            </nav>
+            ${NavBar}
             <div class="login">
                 <h2>Faça o seu Cadastro</h2>
                 <p class="text-left">Empreencha seu dados para realizar seu cadastro</p>
@@ -50,9 +45,7 @@ let Home  = {
                 }).catch(response => {
                     console.log(response);
                 })
-            }else{
-                location.replace('#/login');
-            }   
+            }
         }
     )}
 }
