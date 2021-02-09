@@ -1,31 +1,46 @@
+import api from '../../service/api';
 import Nav from '../components/Nav'
 
 let Login  = {
     render: async () =>{
         let NavBar = await Nav.render()
         let view = `
-        <div class="container card col-4 p-3 mt-5">
-        <h1>It's Login Bitch</h1> 
-        <form action="#/dashboard">
-            <div class="mb-3">
-                <label for="usuario" class="form-label">Usuario</label>
-                <input type="text" class="form-control" id="usuario" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">Digite o seu usário.</div>
-            </div>
-            <div class="mb-3">
-                <label for="senha" class="form-label">Senha</label>
-                <input type="senha" class="form-control" id="senha">
-            </div>
-            <button type="submit" class="btn btn-primary">Entrar</button>
-        </form>
-        <a href="#/signup">Cadastrar</a>
-        <a href="#/forgotpass">Esqueci a senha</a>
-        </div>
+        ${NavBar}
+        <main class="login">
+            <h2>Faça o seu Login</h2>
+            <form id="form" class="login-form">
+                <input type="text" id="login" placeholder="Digite seu usuário">
+                <input type="password" id="password" placeholder="Digite sua senha">
+                <button type="submit" class="btn btn-main-outline btn-rounded">Entrar</button>
+            </form>
+            <a href="#/forgotpass">Esqueci minha senha</a>
+            <a href="#/signup.html">Ainda não sou cliente</a>
+        </main>
         `
         return view
     },
     after_render: async () =>{
-        // vazio
+        var form = document.getElementById('form');
+        form.addEventListener('submit', function(e){
+            e.preventDefault()
+            let postData = {
+                 usuario:document.getElementById('login').value,
+                 senha: document.getElementById('password').value
+            }
+            let confirm = document.getElementById('password').value
+            if(postData.senha.length >=6 && postData.senha === confirm){
+                api.post('login',postData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response =>{
+                    localStorage.setItem('token', response.data.token)
+                    location.replace('#/dashboard');
+                }).catch(response => {
+                    console.log(response);
+                })
+            }
+        })
     }
 }
 
